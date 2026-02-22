@@ -6,8 +6,7 @@ import { EVENT_TYPES } from "@/lib/store"
 import { EventIcon } from "./event-icon"
 import { cn } from "@/lib/utils"
 
-import { Button3D } from 'react-3d-button';
-import 'react-3d-button/styles';
+
 
 export function ProjectCard({
   project,
@@ -37,6 +36,7 @@ className="
   shadow-xl shadow-black/10
   transition-all duration-400
   hover:-translate-y-8
+  hover:-rotate-5
   hover:shadow-2xl hover:shadow-primary/20
   hover:border-primary/50
 
@@ -105,7 +105,7 @@ export function CreateNewCard({ onClick }: { onClick: () => void }) {
       className={cn(
         "group flex min-h-[200px] flex-col items-center justify-center gap-3 rounded-2xl",
         "border-2 border-dashed border-primary/30 bg-primary/5",
-        "transition-all duration-300 hover:border-primary/60 hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/10",
+        "transition-all duration-300 hover:zoom-105  hover:bg-primary/10 hover:shadow-lg hover:shadow-primary/10 ",
         "cursor-pointer"
       )}
     >

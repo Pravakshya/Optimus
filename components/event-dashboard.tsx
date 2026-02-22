@@ -12,7 +12,7 @@ import {MaterialsPanel} from "./materials-panel"
 import { RoomBuilder } from "./room-builder"
 import { TodoPanel } from "./todo-panel"
 import { AiAssistant } from "./ai-assistant"
-import { EVENT_TYPES, type RoomItem, type Vendor, type TodoItem } from "@/lib/store"
+import { EVENT_TYPES, type RoomItem, type Vendor, type TodoItem, type CostCategory } from "@/lib/store"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { cn } from "@/lib/utils"
 
@@ -58,6 +58,13 @@ export function EventDashboard({
     updateProject(projectId, { todos })
   }
 
+  const handleBudgetChange = (totalBudget: number) => {
+    updateProject(projectId, { totalBudget })
+  }
+
+  const handleCostCategoriesChange = (categories: Record<string, CostCategory>) => {
+    updateProject(projectId, { costCategories: categories })
+  }
   return (
     <div className="flex min-h-screen flex-col bg-background">
       {/* Header */}
@@ -94,13 +101,13 @@ export function EventDashboard({
               className={cn(
                 "flex items-center gap-2 rounded-xl px-3 py-2 text-sm font-medium transition-all",
                 todoOpen
-                  ? "bg-primary/10 text-primary"
-                  : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                  ? "hover: bg-primary/10 text-primary hover:scale-[1.15]"
+                  : "text-muted-foreground hover:bg-secondary hover:text-foreground hover:scale-[1.15]"
               )}
               aria-label={todoOpen ? "Close to-do panel" : "Open to-do panel"}
             >
               {todoOpen ? <PanelRightClose className="size-4" /> : <PanelRightOpen className="size-4" />}
-              <span className="hidden sm:inline">To-Do</span>
+              <span className="hidden sm:inline">TO DO</span>
               {project.todos.length > 0 && (
                 <span className="flex size-5 items-center justify-center rounded-full bg-primary text-[10px] font-bold text-primary-foreground">
                   {project.todos.filter((t) => !t.completed).length}
@@ -112,7 +119,7 @@ export function EventDashboard({
       </header>
 
       {/* Main content with optional todo sidebar */}
-      <div className="mx-auto flex w-full max-w-[1600px] flex-1 pb-20">
+      <div className="mx-auto flex w-full max-w-[1600px] flex-1 pb-20 ">
         {/* Tab content */}
         <main className={cn(
           "flex-1 min-w-0 transition-all duration-300",
@@ -129,6 +136,8 @@ export function EventDashboard({
                   totalBudget={project.totalBudget}
                   vendors={project.vendors}
                   onVendorsChange={handleVendorsChange}
+                  onCostCategoriesChange={handleCostCategoriesChange}
+                  onBudgetChange={handleBudgetChange}
                 />
               )}
               {activeTab === "invites" && (

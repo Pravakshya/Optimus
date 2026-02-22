@@ -45,7 +45,7 @@ export function HomeOverview({
       {/* Quick stats grid */}
       <div className="grid grid-cols-2 gap-4">
         <button
-          className="group flex flex-col gap-3 rounded-2xl border border-border/50 bg-card/70 p-5 backdrop-blur-sm text-left transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+          className="group flex flex-col gap-3 rounded-2xl border border-border/50 bg-card/70 p-5 backdrop-blur-sm text-left transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 hover:-scale-[-1.02]"
         >
           <div className="flex items-center gap-2">
             <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10">
@@ -60,7 +60,7 @@ export function HomeOverview({
         </button>
 
         <button
-          className="group flex flex-col gap-3 rounded-2xl border border-border/50 bg-card/70 p-5 backdrop-blur-sm text-left transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+          className="group flex flex-col gap-3 rounded-2xl border border-border/50 bg-card/70 p-5 backdrop-blur-sm text-left transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 hover:-scale-[-1.02]"
         >
           <div className="flex items-center gap-2">
             <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10">
@@ -68,7 +68,7 @@ export function HomeOverview({
             </div>
             <span className="text-xs font-medium text-muted-foreground">Budget</span>
           </div>
-          <div className="text-3xl font-bold font-mono text-foreground">
+          <div className="text-3xl font-bold font-msono text-foreground">
             ${project.totalBudget.toLocaleString()}
           </div>
           <span className="text-xs text-muted-foreground">
@@ -77,7 +77,7 @@ export function HomeOverview({
         </button>
 
         <button
-          className="group flex flex-col gap-3 rounded-2xl border border-border/50 bg-card/70 p-5 backdrop-blur-sm text-left transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
+          className="group flex flex-col gap-3 rounded-2xl border border-border/50 bg-card/70 p-5 backdrop-blur-sm text-left transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 hover:-scale-[-1.02]"
         >
           <div className="flex items-center gap-2">
             <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10">
@@ -93,14 +93,14 @@ export function HomeOverview({
           </span>
         </button>
 
-        <div className="flex flex-col gap-3 rounded-2xl border border-border/50 bg-card/70 p-5 backdrop-blur-sm">
-          <div className="flex items-center gap-2">
+        <div className="flex flex-col gap-3 rounded-2xl border border-border/50 bg-card/70 p-5 backdrop-blur-sm text-left transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 hover:-scale-[-1.02]">
+          <div className="flex items-center gap-2 ">
             <div className="flex size-8 items-center justify-center rounded-lg bg-primary/10">
               <MapPin className="size-4 text-primary" />
             </div>
             <span className="text-xs font-medium text-muted-foreground">Venue</span>
           </div>
-          <div className="text-sm font-semibold text-foreground leading-snug">
+          <div className="text-3xl font-semibold text-foreground leading-snug">
             {project.venueAddress || "Not set"}
           </div>
           <span className="text-xs text-muted-foreground capitalize">

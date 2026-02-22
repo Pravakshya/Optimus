@@ -201,6 +201,36 @@ export function InvitesPanel({
                 }`}>
                   {inv.status}
                 </span>
+                {inv.status === "pending" && (
+                  <div className="flex items-center gap-1">
+                    <button
+                      onClick={() => {
+                        setInvites((prev) =>
+                          prev.map((inv2, i) => 
+                            i === idx ? { ...inv2, status: "confirmed" } : inv2
+                          )
+                        )
+                      }}
+                      className="text-[10px] px-2 py-1 rounded-md bg-primary text-primary-foreground hover:opacity-90 transition-all"
+                      aria-label={`Accept ${inv.name}`}
+                    >
+                      Accept
+                    </button>
+                    <button
+                      onClick={() => {
+                        setInvites((prev) =>
+                          prev.map((inv2, i) => 
+                            i === idx ? { ...inv2, status: "declined" } : inv2
+                          )
+                        )
+                      }}
+                      className="text-[10px] px-2 py-1 rounded-md bg-destructive text-primary-foreground hover:opacity-90 transition-all"
+                      aria-label={`Decline ${inv.name}`}
+                    >
+                      Decline
+                    </button>
+                  </div>
+                )}
                 <button
                   onClick={() => removeInvite(idx)}
                   className="opacity-0 group-hover:opacity-100 text-destructive transition-all"

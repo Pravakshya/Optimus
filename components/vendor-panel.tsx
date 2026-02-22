@@ -1,18 +1,22 @@
 "use client"
 
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { ExternalLink, Plus, Trash2, DollarSign, Tag } from "lucide-react"
 import { Input } from "@/components/ui/input"
-import type { Vendor } from "@/lib/store"
+import type { Vendor, CostCategory } from "@/lib/store"
 
 export function VendorPanel({
   vendors,
   onVendorsChange,
   totalBudget,
+  costCategories,
+  onCostCategoriesChange,
 }: {
   vendors: Vendor[]
   onVendorsChange: (vendors: Vendor[]) => void
   totalBudget: number
+  costCategories: Record<string, CostCategory>
+  onCostCategoriesChange: (categories: Record<string, CostCategory>) => void
 }) {
   const [showForm, setShowForm] = useState(false)
   const [newVendor, setNewVendor] = useState({
@@ -25,8 +29,44 @@ export function VendorPanel({
   const totalCost = vendors.reduce((sum, v) => sum + v.cost, 0)
   const remaining = totalBudget - totalCost
 
+  // Sync costCategories when vendors change
+  useEffect(() => {
+    const newCategories = { ...costCategories }
+    
+    // Reset vendor tracking
+    Object.keys(newCategories).forEach(key => {
+      newCategories[key] = { ...newCategories[key], vendor: "", budget: 0, enabled: false }
+    })
+
+    // Group vendors by category and sum their costs
+    const vendorsByCategory: Record<string, { names: string[]; cost: number }> = {}
+    
+    vendors.forEach(vendor => {
+      const categoryKey = vendor.category.toLowerCase()
+      if (categoryKey in newCategories) {
+        if (!vendorsByCategory[categoryKey]) {
+          vendorsByCategory[categoryKey] = { names: [], cost: 0 }
+        }
+        vendorsByCategory[categoryKey].names.push(vendor.name)
+        vendorsByCategory[categoryKey].cost += vendor.cost
+      }
+    })
+
+    // Update categories with vendor information
+    Object.entries(vendorsByCategory).forEach(([categoryKey, data]) => {
+      newCategories[categoryKey] = {
+        ...newCategories[categoryKey],
+        vendor: data.names.join(", "),
+        budget: data.cost,
+        enabled: data.cost > 0,
+      }
+    })
+
+    onCostCategoriesChange(newCategories)
+  }, [vendors, costCategories, onCostCategoriesChange])
+
   const addVendor = () => {
-    if (!newVendor.name) return
+    if (!newVendor.name || !newVendor.category) return
     const vendor: Vendor = {
       id: crypto.randomUUID(),
       ...newVendor,

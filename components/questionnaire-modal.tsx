@@ -37,7 +37,6 @@ const STEPS = [
   "Event Type",
   "Budget",
   "Venue",
-  "Cost Categories",
 ]
 
 export function QuestionnaireModal({
@@ -67,7 +66,7 @@ export function QuestionnaireModal({
     setStep(0)
     setName("")
     setCapacity(100)
-    setGuestRange([50, 150])
+    setGuestRange([50, 100])
     setEventType("corporate")
     setTotalBudget(10000)
     setVenueAddress("")
@@ -313,58 +312,7 @@ export function QuestionnaireModal({
                 </div>
               </div>
             )}
-
-            {step === 4 && (
-              <div className="flex flex-col gap-3">
-                {Object.entries(COST_CATEGORY_LABELS).map(([key, label]) => (
-                  <div
-                    key={key}
-                    className={cn(
-                      "rounded-2xl border transition-all duration-200",
-                      costCategories[key].enabled
-                        ? "border-primary/30 bg-primary/5"
-                        : "border-border/50 bg-background/30"
-                    )}
-                  >
-                    <div className="flex items-center justify-between p-4">
-                      <span className="text-sm font-medium text-foreground">{label}</span>
-                      <Switch
-                        checked={costCategories[key].enabled}
-                        onCheckedChange={() => toggleCategory(key)}
-                      />
-                    </div>
-                    {costCategories[key].enabled && (
-                      <div className="flex flex-col gap-3 border-t border-border/30 p-4">
-                        <div className="flex flex-col gap-1.5">
-                          <Label className="text-xs text-muted-foreground">
-                            Budget: <span className="font-mono text-primary">${costCategories[key].budget.toLocaleString()}</span>
-                          </Label>
-                          <Slider
-                            value={[costCategories[key].budget]}
-                            onValueChange={([v]) => updateCategoryBudget(key, v)}
-                            min={0}
-                            max={totalBudget}
-                            step={100}
-                          />
-                        </div>
-                        <Input
-                          value={costCategories[key].vendor}
-                          onChange={(e) => updateCategoryVendor(key, e.target.value)}
-                          placeholder="Vendor name"
-                          className="h-9 rounded-lg border-border/50 bg-background/50 text-sm"
-                        />
-                        <Input
-                          value={costCategories[key].notes}
-                          onChange={(e) => updateCategoryNotes(key, e.target.value)}
-                          placeholder="Notes..."
-                          className="h-9 rounded-lg border-border/50 bg-background/50 text-sm"
-                        />
-                      </div>
-                    )}
-                  </div>
-                ))}
-              </div>
-            )}
+            
           </div>
         </div>
 
