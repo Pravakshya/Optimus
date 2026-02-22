@@ -6,6 +6,9 @@ import { EVENT_TYPES } from "@/lib/store"
 import { EventIcon } from "./event-icon"
 import { cn } from "@/lib/utils"
 
+import { Button3D } from 'react-3d-button';
+import 'react-3d-button/styles';
+
 export function ProjectCard({
   project,
   onEdit,
@@ -20,6 +23,9 @@ export function ProjectCard({
   const typeInfo = EVENT_TYPES.find((t) => t.id === project.eventType)
 
   return (
+    
+
+    
     <div
       className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/50 bg-card/70 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 cursor-pointer"
       onClick={() => onEdit(project.id)}

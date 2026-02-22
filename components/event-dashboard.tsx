@@ -138,6 +138,7 @@ export function EventDashboard({
                   onGuestRangeChange={handleGuestRangeChange}
                 />
               )}
+              
               {activeTab === "room" && (
                 <RoomBuilder
                   items={project.roomItems}

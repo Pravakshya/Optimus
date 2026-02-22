@@ -9,6 +9,8 @@ import type { EventProject } from "@/lib/store"
 import { Search } from "lucide-react"
 import { Input } from "@/components/ui/input"
 
+
+
 export function Dashboard({
   onOpenProject,
 }: {
@@ -30,7 +32,7 @@ export function Dashboard({
 
   return (
     <div className="min-h-screen bg-background">
-      <TopNav activeTab={activeTab} onTabChange={setActiveTab} />
+      <TopNav />
 
       <main className="mx-auto max-w-7xl px-6 py-8">
         <div className="flex flex-col gap-8">
