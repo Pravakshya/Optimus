@@ -27,7 +27,7 @@ export function TopNav() {
         <nav className="flex items-center gap-1">
           
             <button className="">
-              My Projects
+              My Events
             </button>
         </nav>
 

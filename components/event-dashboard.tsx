@@ -8,6 +8,7 @@ import { BottomNav, type DashboardTab } from "./bottom-nav"
 import { HomeOverview } from "./home-overview"
 import { BudgetTab } from "./budget-tab"
 import { InvitesPanel } from "./invites-panel"
+import {MaterialsPanel} from "./materials-panel"
 import { RoomBuilder } from "./room-builder"
 import { TodoPanel } from "./todo-panel"
 import { AiAssistant } from "./ai-assistant"
@@ -138,7 +139,9 @@ export function EventDashboard({
                   onGuestRangeChange={handleGuestRangeChange}
                 />
               )}
-              
+              {activeTab === "materials" && (
+                <MaterialsPanel />
+              )}
               {activeTab === "room" && (
                 <RoomBuilder
                   items={project.roomItems}

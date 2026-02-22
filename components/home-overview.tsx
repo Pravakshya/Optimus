@@ -45,7 +45,6 @@ export function HomeOverview({
       {/* Quick stats grid */}
       <div className="grid grid-cols-2 gap-4">
         <button
-          onClick={() => onNavigate("invites")}
           className="group flex flex-col gap-3 rounded-2xl border border-border/50 bg-card/70 p-5 backdrop-blur-sm text-left transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
         >
           <div className="flex items-center gap-2">
@@ -61,7 +60,6 @@ export function HomeOverview({
         </button>
 
         <button
-          onClick={() => onNavigate("budget")}
           className="group flex flex-col gap-3 rounded-2xl border border-border/50 bg-card/70 p-5 backdrop-blur-sm text-left transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
         >
           <div className="flex items-center gap-2">
@@ -79,7 +77,6 @@ export function HomeOverview({
         </button>
 
         <button
-          onClick={() => onNavigate("room")}
           className="group flex flex-col gap-3 rounded-2xl border border-border/50 bg-card/70 p-5 backdrop-blur-sm text-left transition-all hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5"
         >
           <div className="flex items-center gap-2">

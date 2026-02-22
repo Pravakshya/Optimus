@@ -35,7 +35,7 @@ export function BottomNav({
               "flex items-center gap-2 rounded-xl px-3.5 py-2.5 text-sm font-medium transition-all duration-200",
               active
                 ? "bg-primary text-primary-foreground shadow-md shadow-primary/25"
-                : "text-muted-foreground hover:bg-secondary hover:text-foreground"
+                : "text-muted-foreground hover:bg-secondary hover:text-foreground hover: translate-y-0.5" 
             )}
           >
             <tab.icon className="size-4" />

@@ -7,8 +7,11 @@ const _inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const _spaceMono = Space_Mono({ weight: ["400", "700"], subsets: ["latin"], variable: "--font-space-mono" });
 
 export const metadata: Metadata = {
-  title: 'Eventide - Event Planning Platform',
+  title: 'Optimus - Event Planning Platform',
   description: 'Organize, host, and manage in-person events with an immersive 3D planning experience.',
+  icons: {
+    icon: 'optimus.png', // Path to your favicon image in the public directory
+  },
 }
 
 export const viewport: Viewport = {

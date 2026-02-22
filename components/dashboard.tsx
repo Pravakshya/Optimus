@@ -38,7 +38,7 @@ export function Dashboard({
         <div className="flex flex-col gap-8">
           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
             <div>
-              <h1 className="text-2xl font-bold text-foreground">My Projects</h1>
+              <h1 className="text-2xl font-bold text-foreground">My Events</h1>
               <p className="text-sm text-muted-foreground">
                 {projects.length} event{projects.length !== 1 ? "s" : ""} in your workspace
               </p>

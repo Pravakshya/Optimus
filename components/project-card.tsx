@@ -27,8 +27,22 @@ export function ProjectCard({
 
     
     <div
-      className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/50 bg-card/70 backdrop-blur-sm shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/10 hover:border-primary/30 cursor-pointer"
-      onClick={() => onEdit(project.id)}
+className="
+  group relative flex flex-col overflow-hidden rounded-3xl
+
+  border border-white/30
+  bg-white/70 dark:bg-neutral-900/70
+  backdrop-blur-2xl
+
+  shadow-xl shadow-black/10
+  transition-all duration-400
+  hover:-translate-y-8
+  hover:shadow-2xl hover:shadow-primary/20
+  hover:border-primary/50
+
+
+  cursor-pointer
+"      onClick={() => onEdit(project.id)}
       role="button"
       tabIndex={0}
       onKeyDown={(e) => {
