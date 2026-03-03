@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { Dashboard } from "@/components/dashboard"
 import { EventDashboard } from "@/components/event-dashboard"
+import AuthGate from "@/components/auth-gate"
 
 export default function Home() {
   const [activeProjectId, setActiveProjectId] = useState<string | null>(null)
@@ -16,5 +17,5 @@ export default function Home() {
     )
   }
 
-  return <Dashboard onOpenProject={setActiveProjectId} />
+  return <AuthGate><Dashboard onOpenProject={setActiveProjectId} /></AuthGate>
 }
